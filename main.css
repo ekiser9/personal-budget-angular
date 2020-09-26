@@ -1,9 +1,9 @@
 * {
     box-sizing: border-box;
 }
-
+/* This is an SEO Change */
 body {
-    font-size: 10px;
+    font-size: 12px;
     font-family: Tahoma, Arial;
 }
 
@@ -95,6 +95,7 @@ nav.menu ul li a:hover  {
     display: inline-block;
     width: 100%;
     max-width: 340px;
+    min-height: 100px;
     text-align: justify;
     margin: 20px;
 }
