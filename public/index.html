@@ -3,34 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- This is an SEO Change -->
+
     <meta name="description" content="A personal budget management app to help you keep control of your finances.">
     <title>Personal Budget</title>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-<!-- This is a Semantic HTML Change - nav -->
+
     <nav class="menu">
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/about.html">About</a></li>
             <li><a href="/login.html">Login</a></li>
             <li><a href="https://google.com">Google</a></li>
-<!-- This is an A11y Change -->
+
             <li><a class="skip" href="#main">Skip to Content</a></li>
         </ul>
     </nav>
-<!-- This is a Semantic HTML Change - header -->
+
     <header class="hero">
         <h1>Personal Budget</h1>
         <h2>A personal-budget management app</h2>
     </header>
-<!-- This is a Semantic HTML Change - main -->
+
     <main id="main" class="container center">
-<!-- This is a Semantic HTML Change - section -->
+
         <section class="page-area">
-<!-- This is a Semantic HTML Change - including all uses of article below -->
+
             <article class="text-box">
                 <h1>Stay on track</h1>
                 <p>
@@ -89,21 +89,59 @@
             </article>
     
             <article class="text-box">
-                <h1>Free</h1>
+                <h1>Chart</h1>
                 <p>
-                    This app is free!!! And you are the only one holding your data!
+                    <canvas id="myChart" width="400" height="400"></canvas>
                 </p>
             </article>
 
         </section>
 
     </main>
-<!-- This is a Semantic HTML Change -->
+
     <footer class="bottom">
         <p class="center">
             All rights reserved &copy; Fabio Nolasco
         </p>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
+    <script>
+        var dataSource = {
+            datasets: [
+                {
+                    data: [],
+                    backgroundColor: [
+                        '#ffcd56',
+                        '#ff6384',
+                        '#36a2eb',
+                        '#fd6b19',
+                    ],
+                }
+            ],
+            labels: []
+        };
 
+        function createChart() {
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myPieChart = new Chart(ctx, {
+                type: 'pie',
+                data: dataSource
+            });
+        }
+
+        function getBudget() {
+            axios.get('/budget')
+            .then(function (res) {
+                console.log(res);
+                for (var i = 0; i < res.data.myBudget.length; i++) {
+                    dataSource.datasets[0].data[i] = res.data.myBudget[i].budget;
+                    dataSource.labels[i] = res.data.myBudget[i].title;
+                }
+                createChart();
+            });
+        }
+        getBudget();
+    </script>
 </body>
 </html>
