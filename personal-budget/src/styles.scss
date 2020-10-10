@@ -366,70 +366,6 @@ body {
   font-family: Tahoma, Arial;
 }
 
-nav.menu {
-  width: 100%;
-  background-color: #4d5791;
-  height: 44px;
-  padding: 0 40px;
-}
-
-nav.menu ul,
-nav.menu ul li {
-  margin: 0;
-  padding: 0 ;
-  list-style: none;
-  display: inline-block;
-}
-
-nav.menu ul li a {
-  display: block;
-  padding: 0 20px;
-  line-height: 44px;
-  font-size: 1.4em;
-  text-decoration: none;
-  color: #fff;
-  margin: 0;
-}
-
-nav.menu ul li a:hover  {
-  background-color: white;
-  color: #4d5791;
-}
-
-.skip {
-  transform: translateY(-100%);
-}
-
-.skip:focus {
-  transform: translateY(0%);
-}
-
-.hero {
-  height: 350px;
-  background-color: #b4c6f0;
-  background-image: url('/assets/bg.png');
-  background-size: 400px;
-  background-repeat: no-repeat;
-  background-position: center bottom;
-  padding-top: 40px;
-}
-
-.hero h1,
-.hero h2 {
-  text-align: center;
-  margin: 0;
-}
-
-.hero h1 {
-  color: #fff;
-  font-size: 4.2em;
-  margin-bottom: 20px;
-}
-
-.hero h2 {
-  color: #4d5791;
-}
-
 .container {
   padding: 40px;
   width: 100%;
@@ -457,6 +393,12 @@ nav.menu ul li a:hover  {
   min-height: 100px;
   text-align: justify;
   margin: 20px;
+}
+
+.bread {
+  max-width: 25%;
+  height: auto;
+  margin-left: 5%;
 }
 
 @media screen and (min-width: 768px) {
